@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         useLinearSearch()
+        usePersonExample()
     }
     
     //MARK: - Basic example of Generic
@@ -61,7 +62,7 @@ class ViewController: UIViewController {
         }
         return nil
     }
-
+    
     func useLinearSearch() {
         let cars = ["Honda", "Toyota", "Ford", "Tesla"]
         let carKey = "Ford"
@@ -73,6 +74,34 @@ class ViewController: UIViewController {
         let itemKey = 10
         if let itemIndex = genericLinearSearch(array: items, key: itemKey) {
             print("The items have a value of \(itemKey) on index \(itemIndex)")
+        }
+    }
+    
+    struct Person: Equatable {
+        let name: String
+        let age: Int
+        
+        static func == (lhs: Person, rhs: Person) -> Bool {
+            if lhs.name == rhs.name && lhs.age == rhs.age {
+                return true
+            }
+            return false
+        }
+    }
+    
+    func usePersonExample() {
+        let jim1 = Person(name: "Jim", age: 23)
+        let jim2 = Person(name: "Jim", age: 23)
+        
+        let bob1 = Person(name: "Bob", age: 40)
+        
+        print(jim1 == jim2) // Will print true
+        print(jim2 == bob1) // Will print false
+        
+        let people = [jim1, jim2, bob1]
+        
+        if let bobIndex = genericLinearSearch(array: people, key: bob1) {
+            print(people[bobIndex].age)
         }
     }
 }
