@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        useLinearSearch()
     }
     
     //MARK: - Basic example of Generic
@@ -29,8 +31,49 @@ class ViewController: UIViewController {
     }
     
     func useAdd() {
-        let c = genericAdd(a: 10, b: 10) // Type c value is Int
-        let d = genericAdd(a: 11.22, b: 10) //Type d value is Double
+        _ = genericAdd(a: 10, b: 10) // Type c value is Int
+        _ = genericAdd(a: 11.22, b: 10) //Type d value is Double
+    }
+    
+    //MARK: - LinearSearch Function using Equatable
+    
+    func linearSearch(array: [String], key: String) -> Int? {
+        for i in 0..<array.count {
+            if array[i] == key {
+                return i
+            }
+        }
+        return nil
+    }
+    
+    /* EQUATABLE is the protocol which requires any conforming type to implement the equal to operator (==)
+    and the not equal to operator (!=) to compare any two values of that type. */
+    
+    /* Another notation of the function is:
+    func genericLinearSearch<T>(array: [T], key: T) -> Int? where T: Equatable
+    */
+    
+    func genericLinearSearch<T: Equatable>(array: [T], key: T) -> Int? {
+        for i in 0..<array.count {
+            if array[i] == key {
+                return i
+            }
+        }
+        return nil
+    }
+
+    func useLinearSearch() {
+        let cars = ["Honda", "Toyota", "Ford", "Tesla"]
+        let carKey = "Ford"
+        if let carIndex = genericLinearSearch(array: cars, key: carKey) {
+            print("The cars have the \(carKey) on index \(carIndex)")
+        }
+        
+        let items = [1, 2, 3, 4, 5, 10, 12, 13]
+        let itemKey = 10
+        if let itemIndex = genericLinearSearch(array: items, key: itemKey) {
+            print("The items have a value of \(itemKey) on index \(itemIndex)")
+        }
     }
 }
 
