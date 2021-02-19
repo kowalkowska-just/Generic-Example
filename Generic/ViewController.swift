@@ -106,3 +106,36 @@ class ViewController: UIViewController {
     }
 }
 
+//MARK: - Protocol
+
+protocol Drivable {
+    func speed()
+}
+
+class Car: Drivable {
+    func speed() {
+        print("Top speed 160mph")
+    }
+}
+
+// 
+
+protocol Addable {
+    static func +(lhs: Self, rhs: Self) -> Self
+}
+
+extension Int: Addable { }
+
+extension Double: Addable { }
+
+func customAdd<T: Addable>(a: T, b: T) -> T {
+    return a + b
+}
+
+func customAddExample() {
+    let addInt = customAdd(a: 4, b: 5)
+    print(addInt)
+    
+    let addDouble = customAdd(a: 3.14, b: 4.55)
+    print(addDouble)
+}
