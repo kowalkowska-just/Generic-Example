@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         
         useLinearSearch()
         usePersonExample()
+        useStorage()
     }
     
     //MARK: - Basic example of Generic
@@ -118,7 +119,7 @@ class Car: Drivable {
     }
 }
 
-// 
+//Custom Generic type constraint
 
 protocol Addable {
     static func +(lhs: Self, rhs: Self) -> Self
@@ -138,4 +139,103 @@ func customAddExample() {
     
     let addDouble = customAdd(a: 3.14, b: 4.55)
     print(addDouble)
+}
+
+//MARK: - Associated Type in Generic
+
+struct Book {
+    var title = ""
+    var author = ""
+}
+
+//protocol Storage {
+//    func store(item: Book)
+//    func retrieve(index: Int) -> Book
+//}
+//
+//class Bookcase: Storage {
+//    private var books = [Book]()
+//
+//    func store(item: Book) {
+//        books.append(item)
+//    }
+//
+//    func retrieve(index: Int) -> Book {
+//        return books[index]
+//    }
+//}
+
+struct VideoGame {
+    var title = ""
+    var publisher = ""
+}
+
+//class VideoCase: Storage {
+//    private var video = [VideoGame]()
+//
+//    func store(item: VideoGame) {
+//        books.append(item)
+//    }
+//
+//    func retrieve(index: Int) -> VideoGame {
+//        return books[index]
+//    }
+//}
+
+protocol Storage {
+    associatedtype Item
+    
+    func store(item: Item)
+    func retrieve(index: Int) -> Item
+}
+
+class Box<T>: Storage {
+    
+    typealias Item = T
+    var items = [T]()
+    
+    func store(item: Item) {
+        items.append(item)
+    }
+    
+    func retrieve(index: Int) -> Item {
+        return items[index]
+    }
+}
+
+func useStorage() {
+    let booksBox = Box<Book>()
+    booksBox.store(item: Book(title: "Harry Potter1", author: "J. K. Rowling1"))
+    booksBox.store(item: Book(title: "Harry Potter2", author: "J. K. Rowling2"))
+    booksBox.store(item: Book(title: "Harry Potter3", author: "J. K. Rowling3"))
+
+    print(booksBox.retrieve(index: 0).title)
+
+    let videoGamesBox = Box<VideoGame>()
+    videoGamesBox.store(item: VideoGame(title: "Kowalkowska1", publisher: "Justyna1"))
+    videoGamesBox.store(item: VideoGame(title: "Kowalkowska2", publisher: "Justyna2"))
+    videoGamesBox.store(item: VideoGame(title: "Kowalkowska3", publisher: "Justyna3"))
+    
+    print(videoGamesBox.retrieve(index: 1).title)
+    print(videoGamesBox.retrieve(index: 1).publisher)
+}
+
+class GiftBox<Item>: Box<Item> {
+    func wrap() {
+        print("Gift wrap the box.")
+    }
+}
+
+func useSubclass() {
+    struct Toy {
+        var name: String
+    }
+    
+    let toyBox = GiftBox<Toy>()
+    toyBox.store(item: Toy(name: "Gift1"))
+    toyBox.store(item: Toy(name: "Gift2"))
+    toyBox.store(item: Toy(name: "Gift3"))
+    toyBox.wrap()
+  
+    toyBox.retrieve(index: 2).name
 }
