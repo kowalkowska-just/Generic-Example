@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         useLinearSearch()
         usePersonExample()
         useStorage()
+        useLocation()
     }
     
     //MARK: - Basic example of Generic
@@ -238,4 +239,44 @@ func useSubclass() {
     toyBox.wrap()
   
     toyBox.retrieve(index: 2).name
+}
+
+//MARK: - Enum
+
+enum Location {
+    case address(String)
+    case coordinate(Double, Double)
+}
+
+func useLocation() {
+    let loc1 = Location.address("Gdansk")
+    let loc2 = Location.coordinate(40.4443, -122.2346)
+    print(loc1, loc2)
+}
+
+//MARK: - Generic Enum
+
+enum GenericLocation<T> {
+    case address(T)
+    case coordinate(T)
+}
+
+func useGenericLocation() {
+    struct Address {
+        var streetNumber: Int
+        var streetName: String
+        var city: String
+        var zipCode: Int
+    }
+    
+    let loc1 = GenericLocation.address(Address(streetNumber: 123, streetName: "main st", city: "New York", zipCode: 11002))
+    print(loc1)
+    
+    struct Coordinate {
+        let lat: Double
+        let long: Double
+    }
+    
+    let loc2 = GenericLocation.coordinate(Coordinate(lat: 40.23211, long: -122.23244))
+    print(loc2)
 }
