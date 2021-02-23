@@ -17,6 +17,8 @@ class ViewController: UIViewController {
         usePersonExample()
         useStorage()
         useLocation()
+        
+        stackExample()
     }
     
     //MARK: - Basic example of Generic
