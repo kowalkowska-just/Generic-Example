@@ -19,13 +19,38 @@ class ViewController: UIViewController {
         useLocation()
         stackExample()
         
-        NetworkManager().fetch(url: URL(string: "https://swapi.dev/api/people/?search=sky")!) { (results) in
+//        NetworkManager().fetch(url: URL(string: "https://swapi.dev/api/people/?search=sky")!) { (results) in
+//            switch results {
+//            case .failure(let error):
+//                print(error)
+//            case .success(let data):
+//                let json = try? JSONDecoder().decode(SWAPIEnvelope.self, from: data)
+//                print(json ?? "---- NO DATA ----")
+//            }
+//        }
+
+        //MARK: - Generic Network Manager
+
+        GenericNetworkManager<SWAPIEnvelope>().fetch(url: URL(string: "https://swapi.dev/api/people/?search=sky")!) { (results) in
             switch results {
             case .failure(let error):
                 print(error)
-            case .success(let data):
-                let json = try? JSONDecoder().decode(SWAPIEnvelope.self, from: data)
-                print(json ?? "---- NO DATA ----")
+            case .success(let swapi):
+                print(swapi ?? "---- NO DATA ----")
+                
+                self.getFilms(for: swapi?.results[0])
+            }
+        }
+    }
+    
+    func getFilms(for person: Person?) {
+        guard let person = person else { return }
+        GenericNetworkManager<Film>().fetch(url: URL(string: person.films[0])!) { (results) in
+            switch results {
+            case .failure(let error):
+                print(error)
+            case .success(let film):
+                print(film ?? "---- NO DATA ----")
             }
         }
     }
@@ -90,11 +115,11 @@ class ViewController: UIViewController {
         }
     }
     
-    struct Person: Equatable {
+    struct Person1: Equatable {
         let name: String
         let age: Int
         
-        static func == (lhs: Person, rhs: Person) -> Bool {
+        static func == (lhs: Person1, rhs: Person1) -> Bool {
             if lhs.name == rhs.name && lhs.age == rhs.age {
                 return true
             }
@@ -103,10 +128,10 @@ class ViewController: UIViewController {
     }
     
     func usePersonExample() {
-        let jim1 = Person(name: "Jim", age: 23)
-        let jim2 = Person(name: "Jim", age: 23)
+        let jim1 = Person1(name: "Jim", age: 23)
+        let jim2 = Person1(name: "Jim", age: 23)
         
-        let bob1 = Person(name: "Bob", age: 40)
+        let bob1 = Person1(name: "Bob", age: 40)
         
         print(jim1 == jim2) // Will print true
         print(jim2 == bob1) // Will print false

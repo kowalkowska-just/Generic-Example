@@ -1,5 +1,5 @@
 //
-//  NetworkManager.swift
+//  GenericNetworkManager.swift
 //  Generic
 //
 //  Created by Justyna Kowalkowska on 24/02/2021.
@@ -7,14 +7,8 @@
 
 import Foundation
 
-enum NetworkError: Error {
-    case failed(error: Error)
-    case invalidResponse(response: URLResponse )
-    case emptyData
-}
-
-class NetworkManager {
-    func fetch(url: URL, completion: @escaping(Result<Data, NetworkError>) -> Void) {
+class GenericNetworkManager<T: Codable> {
+    func fetch(url: URL, completion: @escaping(Result<T?, NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
                 completion(.failure(.failed(error: error!)))
@@ -31,7 +25,9 @@ class NetworkManager {
                 return
             }
             
-            completion(.success(data))
+            let json = try? JSONDecoder().decode(T.self, from: data)
+            completion(.success(json))
+            
         }.resume()
     }
 }

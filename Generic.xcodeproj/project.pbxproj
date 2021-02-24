@@ -12,6 +12,7 @@
 		D11889A425E5C5A50018CF1C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11889A325E5C5A50018CF1C /* Person.swift */; };
 		D11889A825E5C7230018CF1C /* SWAPIEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11889A725E5C7230018CF1C /* SWAPIEnvelope.swift */; };
 		D11889AB25E5C7320018CF1C /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11889AA25E5C7320018CF1C /* Film.swift */; };
+		D11889AE25E692610018CF1C /* GenericNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11889AD25E692610018CF1C /* GenericNetworkManager.swift */; };
 		D11926D325DFD5E100BDDDF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11926D225DFD5E100BDDDF4 /* AppDelegate.swift */; };
 		D11926D525DFD5E100BDDDF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11926D425DFD5E100BDDDF4 /* SceneDelegate.swift */; };
 		D11926D725DFD5E100BDDDF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11926D625DFD5E100BDDDF4 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 		D11889A325E5C5A50018CF1C /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		D11889A725E5C7230018CF1C /* SWAPIEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPIEnvelope.swift; sourceTree = "<group>"; };
 		D11889AA25E5C7320018CF1C /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		D11889AD25E692610018CF1C /* GenericNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericNetworkManager.swift; sourceTree = "<group>"; };
 		D11926CF25DFD5E100BDDDF4 /* Generic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Generic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D11926D225DFD5E100BDDDF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D11926D425DFD5E100BDDDF4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				D118899E25E5C2370018CF1C /* NetworkManager.swift */,
+				D11889AD25E692610018CF1C /* GenericNetworkManager.swift */,
 			);
 			path = APIManager;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D11889A425E5C5A50018CF1C /* Person.swift in Sources */,
+				D11889AE25E692610018CF1C /* GenericNetworkManager.swift in Sources */,
 				D11889A825E5C7230018CF1C /* SWAPIEnvelope.swift in Sources */,
 				D11926D725DFD5E100BDDDF4 /* ViewController.swift in Sources */,
 				D11926D325DFD5E100BDDDF4 /* AppDelegate.swift in Sources */,
