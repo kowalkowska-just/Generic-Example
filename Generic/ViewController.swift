@@ -17,8 +17,17 @@ class ViewController: UIViewController {
         usePersonExample()
         useStorage()
         useLocation()
-        
         stackExample()
+        
+        NetworkManager().fetch(url: URL(string: "https://swapi.dev/api/people/?search=sky")!) { (results) in
+            switch results {
+            case .failure(let error):
+                print(error)
+            case .success(let data):
+                let json = try? JSONDecoder().decode(SWAPIEnvelope.self, from: data)
+                print(json ?? "---- NO DATA ----")
+            }
+        }
     }
     
     //MARK: - Basic example of Generic
@@ -278,7 +287,7 @@ func useGenericLocation() {
         let lat: Double
         let long: Double
     }
-    
+     
     let loc2 = GenericLocation.coordinate(Coordinate(lat: 40.23211, long: -122.23244))
     print(loc2)
 }
