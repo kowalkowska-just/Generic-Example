@@ -19,6 +19,7 @@
 		D11926DA25DFD5E100BDDDF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D11926D825DFD5E100BDDDF4 /* Main.storyboard */; };
 		D11926DC25DFD5E900BDDDF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D11926DB25DFD5E900BDDDF4 /* Assets.xcassets */; };
 		D11926DF25DFD5E900BDDDF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D11926DD25DFD5E900BDDDF4 /* LaunchScreen.storyboard */; };
+		D12BEEC225E7031900723328 /* RegularTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12BEEC125E7031900723328 /* RegularTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D11926DB25DFD5E900BDDDF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D11926DE25DFD5E900BDDDF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D11926E025DFD5E900BDDDF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D12BEEC125E7031900723328 /* RegularTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		D11926D125DFD5E100BDDDF4 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
+				D12BEEC025E702F000723328 /* TableViews */,
 				D11889A225E5C5960018CF1C /* Models */,
 				D118899D25E5C21E0018CF1C /* APIManager */,
 				D11926D225DFD5E100BDDDF4 /* AppDelegate.swift */,
@@ -99,6 +102,14 @@
 				D118899A25E5AC6B0018CF1C /* StackExample.swift */,
 			);
 			path = Generic;
+			sourceTree = "<group>";
+		};
+		D12BEEC025E702F000723328 /* TableViews */ = {
+			isa = PBXGroup;
+			children = (
+				D12BEEC125E7031900723328 /* RegularTableView.swift */,
+			);
+			path = TableViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +184,7 @@
 			files = (
 				D11889A425E5C5A50018CF1C /* Person.swift in Sources */,
 				D11889AE25E692610018CF1C /* GenericNetworkManager.swift in Sources */,
+				D12BEEC225E7031900723328 /* RegularTableView.swift in Sources */,
 				D11889A825E5C7230018CF1C /* SWAPIEnvelope.swift in Sources */,
 				D11926D725DFD5E100BDDDF4 /* ViewController.swift in Sources */,
 				D11926D325DFD5E100BDDDF4 /* AppDelegate.swift in Sources */,

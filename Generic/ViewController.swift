@@ -8,6 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var people = [Person]()
+    
+    private lazy var tableView: RegularTableView = {
+        let regularTable = RegularTableView(items: people.map { $0.name }) { (name, cell) in
+            cell.textLabel?.text = name
+        } selectorHandler: { (selectedName) in
+            print(selectedName)
+        }
+
+        return regularTable
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,26 +30,37 @@ class ViewController: UIViewController {
         useStorage()
         useLocation()
         stackExample()
+        getPeople()
         
-//        NetworkManager().fetch(url: URL(string: "https://swapi.dev/api/people/?search=sky")!) { (results) in
-//            switch results {
-//            case .failure(let error):
-//                print(error)
-//            case .success(let data):
-//                let json = try? JSONDecoder().decode(SWAPIEnvelope.self, from: data)
-//                print(json ?? "---- NO DATA ----")
-//            }
-//        }
-
-        //MARK: - Generic Network Manager
-
+        setUpTableView()
+    }
+    
+    //MARK: - Set Up constraints in TableView
+    
+    func setUpTableView() {
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
+    //MARK: - Generic Network Manager
+    
+    func getPeople() {
         GenericNetworkManager<SWAPIEnvelope>().fetch(url: URL(string: "https://swapi.dev/api/people/?search=sky")!) { (results) in
             switch results {
             case .failure(let error):
                 print(error)
             case .success(let swapi):
                 print(swapi ?? "---- NO DATA ----")
-                
+                if let people = swapi?.results {
+                    self.people = people
+                    self.tableView.reload(data: self.people.map { $0.name })
+                }
                 self.getFilms(for: swapi?.results[0])
             }
         }
