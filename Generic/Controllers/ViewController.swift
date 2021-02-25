@@ -11,15 +11,25 @@ class ViewController: UIViewController {
     
     var people = [Person]()
     
-    private lazy var tableView: RegularTableView = {
-        let regularTable = RegularTableView(items: people.map { $0.name }) { (name, cell) in
-            cell.textLabel?.text = name
-        } selectorHandler: { (selectedName) in
-            print(selectedName)
+    private lazy var tableView: GenericTableView<Person, PersonCell> = {
+        let regularTable = GenericTableView<Person, PersonCell>(items: people) { (person, cell) in
+            cell.person = person
+        } selectorHandler: { (person) in
+            print(person.name, person.gender)
         }
 
         return regularTable
     }()
+    
+//    private lazy var tableView: RegularTableView = {
+//        let regularTable = RegularTableView(items: people.map { $0.name }) { (name, cell) in
+//            cell.textLabel?.text = name
+//        } selectorHandler: { (selectedName) in
+//            print(selectedName)
+//        }
+//
+//        return regularTable
+//    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +69,7 @@ class ViewController: UIViewController {
                 print(swapi ?? "---- NO DATA ----")
                 if let people = swapi?.results {
                     self.people = people
-                    self.tableView.reload(data: self.people.map { $0.name })
+                    self.tableView.reload(data: self.people)
                 }
                 self.getFilms(for: swapi?.results[0])
             }

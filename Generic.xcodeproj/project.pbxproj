@@ -20,6 +20,8 @@
 		D11926DC25DFD5E900BDDDF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D11926DB25DFD5E900BDDDF4 /* Assets.xcassets */; };
 		D11926DF25DFD5E900BDDDF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D11926DD25DFD5E900BDDDF4 /* LaunchScreen.storyboard */; };
 		D12BEEC225E7031900723328 /* RegularTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12BEEC125E7031900723328 /* RegularTableView.swift */; };
+		D12BEEC625E7158E00723328 /* GenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12BEEC525E7158E00723328 /* GenericTableView.swift */; };
+		D12BEEC925E71BBE00723328 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12BEEC825E71BBE00723328 /* PersonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		D11926DE25DFD5E900BDDDF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D11926E025DFD5E900BDDDF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D12BEEC125E7031900723328 /* RegularTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularTableView.swift; sourceTree = "<group>"; };
+		D12BEEC525E7158E00723328 /* GenericTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableView.swift; sourceTree = "<group>"; };
+		D12BEEC825E71BBE00723328 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,15 +93,14 @@
 		D11926D125DFD5E100BDDDF4 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
+				D12BEECC25E71D7500723328 /* Controllers */,
+				D12BEECB25E71D5B00723328 /* Views */,
 				D12BEEC025E702F000723328 /* TableViews */,
 				D11889A225E5C5960018CF1C /* Models */,
 				D118899D25E5C21E0018CF1C /* APIManager */,
 				D11926D225DFD5E100BDDDF4 /* AppDelegate.swift */,
 				D11926D425DFD5E100BDDDF4 /* SceneDelegate.swift */,
-				D11926D625DFD5E100BDDDF4 /* ViewController.swift */,
-				D11926D825DFD5E100BDDDF4 /* Main.storyboard */,
 				D11926DB25DFD5E900BDDDF4 /* Assets.xcassets */,
-				D11926DD25DFD5E900BDDDF4 /* LaunchScreen.storyboard */,
 				D11926E025DFD5E900BDDDF4 /* Info.plist */,
 				D118899A25E5AC6B0018CF1C /* StackExample.swift */,
 			);
@@ -108,8 +111,27 @@
 			isa = PBXGroup;
 			children = (
 				D12BEEC125E7031900723328 /* RegularTableView.swift */,
+				D12BEEC525E7158E00723328 /* GenericTableView.swift */,
 			);
 			path = TableViews;
+			sourceTree = "<group>";
+		};
+		D12BEECB25E71D5B00723328 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D12BEEC825E71BBE00723328 /* PersonCell.swift */,
+				D11926D825DFD5E100BDDDF4 /* Main.storyboard */,
+				D11926DD25DFD5E900BDDDF4 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D12BEECC25E71D7500723328 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D11926D625DFD5E100BDDDF4 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,9 +206,11 @@
 			files = (
 				D11889A425E5C5A50018CF1C /* Person.swift in Sources */,
 				D11889AE25E692610018CF1C /* GenericNetworkManager.swift in Sources */,
+				D12BEEC625E7158E00723328 /* GenericTableView.swift in Sources */,
 				D12BEEC225E7031900723328 /* RegularTableView.swift in Sources */,
 				D11889A825E5C7230018CF1C /* SWAPIEnvelope.swift in Sources */,
 				D11926D725DFD5E100BDDDF4 /* ViewController.swift in Sources */,
+				D12BEEC925E71BBE00723328 /* PersonCell.swift in Sources */,
 				D11926D325DFD5E100BDDDF4 /* AppDelegate.swift in Sources */,
 				D118899F25E5C2370018CF1C /* NetworkManager.swift in Sources */,
 				D11889AB25E5C7320018CF1C /* Film.swift in Sources */,
